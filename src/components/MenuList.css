@@ -1,0 +1,33 @@
+.menu-list {
+    opacity: 0;
+    animation: fadeIn 2s 200ms ease 1 forwards;
+}
+
+.menu-item {
+    border: 2px solid;
+    border-color: white;
+    transition: border, border-color, color 200ms;
+
+    &>span::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        display: flex;
+        background-color: #a5a5a5;
+        transform-origin: left;
+        transition: width 250ms;
+        transform: translateY(-.1rem);
+    }
+
+    &:hover,
+    &:active {
+        border-bottom-color: #a5a5a5;
+        border-right-color: #a5a5a5;
+        color: #a5a5a5;
+
+        &>span::after {
+            width: 100%;
+        }
+    }
+
+}
