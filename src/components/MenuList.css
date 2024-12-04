@@ -5,7 +5,7 @@
 
 .menu-item {
     border: 2px solid;
-    border-color: white;
+    border-color: #FFF;
     transition: border, border-color, color 200ms;
 
     &>span::after {

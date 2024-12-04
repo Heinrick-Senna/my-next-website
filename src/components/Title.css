@@ -17,7 +17,7 @@
   mask-repeat: no-repeat;
   mask-position: 50% -15rem;
   transition: mask 400ms;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px #FFF;
 }
 
 @media (width >=768px) {
@@ -48,7 +48,6 @@
   to {
     opacity: .75;
   }
-
 }
 
 @keyframes fadeIn {

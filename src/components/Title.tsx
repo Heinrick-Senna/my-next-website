@@ -8,7 +8,7 @@ export default function Title() {
       </h1>
       <img
         src="./Profile_Pic.jpg"
-        className="absolute right-0 right-1/2 md:right-[-7.4rem] absolute max-w-[220px] top-full translate-y-[calc(-50%+35px)] translate-x-[50%] md:translate-x-0 fade-in-animation"
+        className="absolute right-0 rounded-xl right-1/2 md:right-[-7.4rem] max-w-[220px] top-full translate-y-[calc(-50%+35px)] translate-x-[50%] md:translate-x-0 fade-in-animation"
         alt="Foto de Marcelo H R Senna"
         title="Foto de Marcelo H R Senna"
         style={{
