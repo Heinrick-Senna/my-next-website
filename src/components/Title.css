@@ -3,6 +3,7 @@
 }
 
 .fade-in-animation {
+  transition: all 400ms;
   animation: fadeIn 200ms 2100ms ease 1 forwards;
 }
 
@@ -14,7 +15,8 @@
   opacity: 0;
   mask-size: 220px auto;
   mask-repeat: no-repeat;
-  mask-position: 100% -15rem;
+  mask-position: 50% -15rem;
+  transition: mask 400ms;
   -webkit-text-stroke: 1px white;
 }
 
