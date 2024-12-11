@@ -10,7 +10,7 @@ export default function SocialLinks() {
             <li className="group-hover:blur-sm hover:!blur-none hover:scale-125 transition">
                 <a target="__blank" href="mailto:marcelohz198@gmail.com" className={listItem} >
                     <span>Gmail</span>
-                    <MdEmail style={{ transform: 'scale(1.2)', transformOrigin: 'bottom' }} size={24} />
+                    <MdEmail style={{ transform: 'scale(1.1)', transformOrigin: 'bottom' }} size={24} />
                 </a>
             </li>
 
@@ -18,7 +18,7 @@ export default function SocialLinks() {
                 <a target="__blank" href="https://www.linkedin.com/in/marcelo-heinrick/" className={listItem}>
                     <span>Linkedin</span>
                     <FaLinkedin size={24} />
-                </a>
+                </a> 
             </li>
 
             <li className="group-hover:blur-sm hover:!blur-none hover:scale-125 transition">

@@ -1,0 +1,56 @@
+.ThemeList {
+    &::after {
+        content: '';
+        background-color: transparent;
+        border: 2px solid rgb(var(--foreground));
+        border-radius: 99999px;
+        position: absolute;
+        left: -.4rem;
+        top: -.4rem;
+        display: flex;
+        width: calc(calc(26px) + .8rem);
+        height: calc(100% + .8rem);
+        transition: left 300ms ease;
+        z-index: 1;
+    }
+
+    &.light {
+        &::after {
+            left: -.4rem;
+        }
+    }
+
+    &.dark { 
+        &::after {
+            left: calc(26px + 1.1rem);
+        }
+    }
+
+    &.system {
+        &::after {
+            left: calc(52px + 2.6rem);
+        }
+    }
+
+    &.light-hover {
+        &::after {
+            left: -.4rem;
+        }
+    }
+
+    &.dark-hover {
+        &::after {
+            left: calc(26px + 1.1rem);
+        }
+    }
+
+    &.system-hover {
+        &::after {
+            left: calc(52px + 2.6rem);
+        }
+    }
+
+    button {
+        z-index: 2;
+    }
+}
