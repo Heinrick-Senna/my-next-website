@@ -28,7 +28,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   });
 
   useEffect(() => {
-    console.log('LOG_2', themeState, theme);
     if (themeState != 'system') {
       window.localStorage.setItem('theme', themeState);
       document.body.setAttribute('class', themeState);
@@ -44,17 +43,17 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const handleChange = () => {
       const getThemeState = (window.localStorage.getItem('theme') || 'system') as ThemeState;
       if (getThemeState === 'system') {
         setTheme(mediaQuery.matches ? 'dark' : 'light');
       }
     };
-  
+
     // Adiciona o listener
     mediaQuery.addEventListener('change', handleChange);
-  
+
     // Remove o listener ao desmontar ou quando `themeState` mudar
     return () => {
       mediaQuery.removeEventListener('change', handleChange);

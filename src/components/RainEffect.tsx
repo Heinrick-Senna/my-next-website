@@ -30,7 +30,6 @@ const RainEffect: React.FC = () => {
   const [rainColor, setRainColor] = useState<string>(theme == 'dark' ? '255, 255, 255' : '0, 0, 0');
 
   useEffect(() => {
-    console.log('LOG_3', theme);
     setRainColor(theme == 'dark' ? '255, 255, 255' : '0, 0, 0')
   }, [theme]);
 
@@ -138,7 +137,7 @@ const RainEffect: React.FC = () => {
     };
   }, [paused, rainColor]);
 
-  return (   
+  return (
     <canvas
       ref={canvasRef}
       style={{
