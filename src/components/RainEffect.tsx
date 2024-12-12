@@ -22,6 +22,7 @@ interface SplashParticle {
 
 const RainEffect: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef2 = useRef<HTMLCanvasElement | null>(null);
   const [paused, setPaused] = useState(false);
   const drops = useRef<Drop[]>([]);
   const splashes = useRef<SplashParticle[]>([]);
@@ -138,17 +139,27 @@ const RainEffect: React.FC = () => {
   }, [paused, rainColor]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        zIndex: 1,
-        width: '100vw',
-        height: '100vh',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        display: "block"
-      }} />
+    <>
+      <button
+        style={{
+          zIndex: 1000
+        }}
+        onClick={() => setPaused(!paused)}>
+        {paused ? 'play' : 'pause'}
+      </button>
+      <canvas
+        ref={canvasRef}
+        style={{
+          zIndex: 1,
+          width: '100vw',
+          height: '100vh',
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          display: "block"
+        }} />
+    </>
+
   );
 };
 

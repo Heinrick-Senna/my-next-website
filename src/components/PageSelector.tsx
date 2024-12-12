@@ -1,5 +1,5 @@
 import Title from "@/components/Title";
-import { TPages } from "@/utils/types";
+import { TPages } from "./Container";
 
 export default function PageSelector({ page }: { page: TPages }) {
   return (

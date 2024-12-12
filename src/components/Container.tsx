@@ -3,7 +3,8 @@
 import PageSelector from "@/components/PageSelector";
 import MenuList from "./MenuList";
 import { useState } from "react";
-import { TPages } from "@/utils/types";
+
+export type TPages = 'about' | 'projects';
 
 export default function Container() {
     const [page, setPage] = useState<TPages>('about');

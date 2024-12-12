@@ -14,7 +14,7 @@ export default function ThemeChanger() {
 
     const mouseHoverHandler = (e: any) => {
         setLastTheme(themeState);
-        setThemeState(e.currentTarget.className as any);
+        setThemeState(e.currentTarget?.className as any);
         setIsThemeSelected(false);
     }
 

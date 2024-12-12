@@ -41,6 +41,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [themeState]);
 
+
+
+
+
+
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -51,10 +56,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }
     };
 
-    // Adiciona o listener
     mediaQuery.addEventListener('change', handleChange);
 
-    // Remove o listener ao desmontar ou quando `themeState` mudar
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
     };
