@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: hidden;
+}
+
 body, body.light {
   --background: 255, 255, 255;
   --foreground: 23, 23, 23;
@@ -22,4 +26,41 @@ body.dark {
 body {
   background: rgb(var(--background));
   color: rgb(var(--foreground));
+}
+
+.dissipate-animation {
+  transition: all 400ms;
+  animation: filterDissipate 1.5s 100ms ease 1 forwards;
+  text-shadow: 50px 50px 10px currentColor;
+  filter: blur(10px);
+  transform: translateY(-8%);
+}
+
+.about-in {
+  opacity: 0;
+  animation: fadeIn 700ms 400ms ease 1 forwards;
+}
+
+@keyframes filterDissipate {
+  0% {
+    text-shadow: 50px 50px 10px currentColor;
+    filter: blur(10px);
+    transform: translateY(-8%);
+  }
+
+  100% {
+    transform: translateY(0);
+    text-shadow: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

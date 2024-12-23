@@ -1,18 +1,22 @@
 "use client"
 
-import PageSelector from "@/components/PageSelector";
 import MenuList from "./MenuList";
 import { useState } from "react";
+import Title from "./Title";
+import About from "./About";
+import Portfolio from "./Portfolio";
 
-export type TPages = 'about' | 'projects';
+export type TPages = 'about' | 'portfolio' | 'home';
 
 export default function Container() {
-    const [page, setPage] = useState<TPages>('about');
+    const [page, setPage] = useState<TPages>('home');
 
     return (
         <>
-            <PageSelector page={page} />
-            <MenuList setPage={setPage} />
+            {page == 'home' && <Title />}
+            {page == 'about' && <About setPage={setPage} />}
+            {page == 'portfolio' && <Portfolio />}
+            <MenuList page={page} setPage={setPage} />
         </>
     );
 }

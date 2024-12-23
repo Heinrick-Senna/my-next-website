@@ -2,8 +2,8 @@
 
 import React, { createContext, useState, useEffect, Dispatch, SetStateAction } from 'react';
 
-type ThemeOption = 'light' | 'dark';
-type ThemeState = 'light' | 'dark' | 'system';
+export type ThemeOption = 'light' | 'dark';
+export type ThemeState = 'light' | 'dark' | 'system';
 
 interface ThemeContextProps {
   theme: ThemeOption;
@@ -12,22 +12,26 @@ interface ThemeContextProps {
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({
-  theme: window.localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-  themeState: window.localStorage.getItem('theme') as ThemeOption || 'system',
+  theme: 'dark',
+  themeState: 'system',
+  // theme: localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  // themeState: localStorage.getItem('theme') as ThemeOption || 'system',
   setThemeState: (value) => { }
 });
 
 // Important setThemeState is used as setTheme just renaming 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeOption>(() => {
-    return window.localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   });
 
   const [themeState, setThemeState] = useState<ThemeState>(() => {
-    return window.localStorage.getItem('theme') as ThemeOption || 'system'
+    return localStorage.getItem('theme') as ThemeOption || 'system'
   });
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
     if (themeState != 'system') {
       window.localStorage.setItem('theme', themeState);
       document.body.setAttribute('class', themeState);
@@ -37,21 +41,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       window.localStorage.removeItem('theme');
       document.body.removeAttribute('class');
 
-      setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      setTheme(mediaQuery.matches ? 'dark' : 'light')
     }
-  }, [themeState]);
-
-
-
-
-
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const handleChange = () => {
-      const getThemeState = (window.localStorage.getItem('theme') || 'system') as ThemeState;
-      if (getThemeState === 'system') {
+      if (themeState === 'system') {
         setTheme(mediaQuery.matches ? 'dark' : 'light');
       }
     };
@@ -61,6 +55,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
     };
+
   }, [themeState]);
 
   return (

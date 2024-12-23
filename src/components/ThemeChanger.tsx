@@ -1,6 +1,6 @@
 "use client"
 
-import { ThemeContext } from "@/contexts/ThemeContext";
+import { ThemeContext, ThemeState } from "@/contexts/ThemeContext";
 import { useContext, useState } from "react";
 import { CiDark } from "react-icons/ci";
 import { TfiShine } from "react-icons/tfi";
@@ -9,47 +9,37 @@ import { IoClose } from "react-icons/io5";
 
 export default function ThemeChanger() {
     const { themeState, setThemeState } = useContext(ThemeContext);
-    const [isThemeSelected, setIsThemeSelected] = useState<boolean>(false)
-    const [lastTheme, setLastTheme] = useState<'light' | 'dark' | 'system' | null>(null)
+    const [hover, setHover] = useState<ThemeState | null>(null);
+    const gap = '.75rem';
 
-    const mouseHoverHandler = (e: any) => {
-        setLastTheme(themeState);
-        setThemeState(e.currentTarget?.className as any);
-        setIsThemeSelected(false);
-    }
-
-    const mouseClickHandler = () => {
-        setIsThemeSelected(true);
-    }
-
-    const mouseLeaveHandler = () => {
-        if (!isThemeSelected) setThemeState(lastTheme ? lastTheme : 'system');
-        setLastTheme(null);
-        setIsThemeSelected(false);
-    }
+    const mouseLeaveHandler = () => setHover(null);
+    const mouseEnterHandler = (e: any) => setHover(e.currentTarget.className as ThemeState);
+    const mouseClickHandler = (e: any) => setThemeState(e.currentTarget.className as ThemeState);
 
     return (
-        <div className={`absolute top-5 left-5 flex z-[2] cursor-pointer gap-6 ThemeList ${themeState}`} >
+        <div className={`absolute top-5 left-5 flex z-[2] cursor-pointer ThemeList ${themeState} ${hover ? hover + '-hover' : ''}`} >
             <button
                 className="light"
-                onMouseLeave={mouseLeaveHandler}
-                onMouseEnter={mouseHoverHandler}
+                style={{ paddingRight: gap }}
+                onMouseEnter={mouseEnterHandler}
                 onClick={mouseClickHandler}
             >
                 <TfiShine size={26} />
             </button>
             <button
                 className="dark"
+                style={{ paddingLeft: gap, paddingRight: gap }}
                 onMouseLeave={mouseLeaveHandler}
-                onMouseEnter={mouseHoverHandler}
+                onMouseEnter={mouseEnterHandler}
                 onClick={mouseClickHandler}
             >
                 <CiDark size={26} />
             </button>
             <button
                 className="system"
+                style={{ paddingLeft: gap }}
                 onMouseLeave={mouseLeaveHandler}
-                onMouseEnter={mouseHoverHandler}
+                onMouseEnter={mouseEnterHandler}
                 onClick={mouseClickHandler}
             >
                 <IoClose size={26} />
