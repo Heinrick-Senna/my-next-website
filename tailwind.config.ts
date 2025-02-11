@@ -11,7 +11,9 @@ export default {
     extend: {
       colors: {
         background: "rgb(var(--background))",
+        backgroundOpacity: "rgba(var(--background))",
         foreground: "rgb(var(--foreground))",
+        foregroundOpacity: "rgba(var(--foreground))",
       },
     },
   },

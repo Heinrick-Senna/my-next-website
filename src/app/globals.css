@@ -6,7 +6,8 @@ html {
   overflow-x: hidden;
 }
 
-body, body.light {
+body,
+body.light {
   --background: 255, 255, 255;
   --foreground: 23, 23, 23;
 }
@@ -54,6 +55,154 @@ body {
     filter: blur(0);
   }
 }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #555;
+}
+
+.scene {
+  max-width: 100%;
+  width: calc(100vw - 6rem);
+  position: relative;
+  perspective: 1000px;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.scene .carousel.keen-slider {
+  overflow: visible;
+  width: calc(100vw - 6rem);
+  height: 10rem;
+  max-width: calc(100vw - 6rem);
+  top: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.carousel__cell {
+  position: absolute;
+  width: calc(100vw - 6rem);
+  max-width: calc(100vw - 6rem);
+  height: 100%;
+  transform-style: preserve-3d;
+  background-blend-mode: luminosity;
+  transition: background-blend-mode 200ms ease-in-out 0s, all ease 500ms;
+}
+
+.carousel__cell.active {
+  top: 0;
+  /* box-shadow: 0 0 20px rgba(var(--foreground), .45); */
+  /* filter: drop-shadow(0 10rem 200px white); */
+  background-blend-mode: difference;
+  transition: background-blend-mode 200ms ease-in-out 1s, all ease 500ms;  
+}
+
+.carousel__cell::after {
+  content: '';
+  opacity: 0;
+  display: flex;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 60%;
+  background-color: rgba(var(--foreground), .45);
+  transform: rotateX(90deg) translate3d(0, 10%, -50px);
+  filter: blur(50px);
+  transition: opacity 200ms ease-in-out 0s;
+}
+
+.carousel__cell.active::after {
+  transition: opacity 200ms ease-in-out 1s;
+  opacity: 1;
+}
+
+.carousel__cell * {
+  backface-visibility: hidden;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .scene {
+    width: 75vw;
+  }
+
+  .scene .carousel.keen-slider {
+    width: 75vw;
+    max-width: 75vw;
+  }
+
+  .carousel__cell {
+    width: 75vw;
+    max-width: 75vw;
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .scene {
+    width: 45vw;
+  }
+
+  .scene .carousel.keen-slider {
+    width: 45vw;
+    max-width: 45vw;
+  }
+
+  .carousel__cell {
+    width: 45vw;
+    max-width: 45vw;
+  }
+}
+
+/* Extra large devices (large desktops, 1280px and up) */
+@media (min-width: 1280px) {
+  .scene {
+    width: 25vw;
+  }
+
+  .scene .carousel.keen-slider {
+    width: 35vw;
+    max-width: 35vw;
+  }
+
+  .carousel__cell {
+    width: 35vw;
+    max-width: 35vw;
+  }
+}
+
+/* @media (min-width: 1536px) {
+  .scene {
+    width: 25vw;
+  }
+
+  .scene .carousel.keen-slider {
+    width: 25vw;
+    max-width: 25vw;
+  }
+
+  .carousel__cell {
+    width: 25vw;
+    max-width: 25vw;
+  }
+} */
+
 
 @keyframes fadeIn {
   from {
