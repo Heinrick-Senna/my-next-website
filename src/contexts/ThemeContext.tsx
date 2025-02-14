@@ -22,11 +22,17 @@ export const ThemeContext = createContext<ThemeContextProps>({
 // Important setThemeState is used as setTheme just renaming 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeOption>(() => {
-    return localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    if (typeof window !== "undefined") {
+      return window.localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+    return 'dark'
   });
 
   const [themeState, setThemeState] = useState<ThemeState>(() => {
-    return localStorage.getItem('theme') as ThemeOption || 'system'
+    if (typeof window !== 'undefined') {
+      return window.localStorage.getItem('theme') as ThemeOption || 'system'
+    }
+    return 'system'
   });
 
   useEffect(() => {

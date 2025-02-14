@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Marcelo Senna personal's website. A software developer.",
 };
 
-export const robotoMono = Roboto_Mono({
+const robotoMono = Roboto_Mono({
   subsets: ['latin'],
   display: 'swap',
 })
