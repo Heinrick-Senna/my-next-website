@@ -1,7 +1,7 @@
 "use client"
 
 import { KeenSliderHooks, KeenSliderInstance, KeenSliderOptions, KeenSliderPlugin, SliderInstance } from "keen-slider";
-import Card, { IProjectCard } from "./Card";
+import Card, { IProjectCard } from "@/components/Card";
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { use, useEffect, useState } from "react";

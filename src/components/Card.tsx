@@ -1,5 +1,3 @@
-"use client"
-
 export interface IProjectCard {
     name: string;
     projectType: 'Frontend' | 'Backend' | 'Fullstack';

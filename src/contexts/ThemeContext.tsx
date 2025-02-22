@@ -1,5 +1,3 @@
-'use client';
-
 import React, { createContext, useState, useEffect, Dispatch, SetStateAction } from 'react';
 
 export type ThemeOption = 'light' | 'dark';
@@ -14,40 +12,35 @@ interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps>({
   theme: 'dark',
   themeState: 'system',
-  // theme: localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-  // themeState: localStorage.getItem('theme') as ThemeOption || 'system',
-  setThemeState: (value) => { }
+  setThemeState: () => {}
 });
 
-// Important setThemeState is used as setTheme just renaming 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeOption>(() => {
-    if (typeof window !== "undefined") {
-      return window.localStorage.getItem('theme') as ThemeOption || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    }
-    return 'dark'
-  });
+  const [theme, setTheme] = useState<ThemeOption>('dark');
+  const [themeState, setThemeState] = useState<ThemeState>('system');
 
-  const [themeState, setThemeState] = useState<ThemeState>(() => {
-    if (typeof window !== 'undefined') {
-      return window.localStorage.getItem('theme') as ThemeOption || 'system'
-    }
-    return 'system'
-  });
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('theme') as ThemeOption;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const initialTheme = storedTheme || (mediaQuery.matches ? 'dark' : 'light');
+    const initialThemeState = storedTheme || 'system';
+
+    setTheme(initialTheme);
+    setThemeState(initialThemeState);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (themeState != 'system') {
+    if (themeState !== 'system') {
       window.localStorage.setItem('theme', themeState);
       document.body.setAttribute('class', themeState);
-
-      setTheme(themeState)
+      setTheme(themeState);
     } else {
       window.localStorage.removeItem('theme');
       document.body.removeAttribute('class');
-
-      setTheme(mediaQuery.matches ? 'dark' : 'light')
+      setTheme(mediaQuery.matches ? 'dark' : 'light');
     }
 
     const handleChange = () => {
@@ -61,7 +54,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
     };
-
   }, [themeState]);
 
   return (

@@ -1,15 +1,15 @@
+import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import { TPages } from "./Container";
 import { IoClose } from "react-icons/io5";
 
-export default function About({ setPage }: { setPage: Dispatch<SetStateAction<TPages>> }) {
+export default function About() {
     return (
         <>
             <h2 className="flex justify-between items-center w-full text-3xl sm:text-2xl font-medium dissipate-animation">
                 Marcelo H R Senna - Desenvolvedor de software
-                <span className="cursor-pointer" onClick={() => setPage('home')}>
+                <Link href={'/'} className="cursor-pointer">
                     <IoClose size={24} />
-                </span>
+                </Link>
             </h2>
             <div className="flex flex-col gap-5 about-in">
                 <span>

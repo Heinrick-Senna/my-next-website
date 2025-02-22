@@ -1,8 +1,7 @@
 import { Roboto_Mono } from 'next/font/google'
-import { ThemeProvider } from "@/contexts/ThemeContext";
-import ThemeChanger from '@/components/ThemeChanger';
 import type { Metadata } from "next";
 import "./globals.css";
+import { Layout } from '@/components/Layout';
 
 export const metadata: Metadata = {
   title: "Marcelo Senna",
@@ -17,12 +16,9 @@ const robotoMono = Roboto_Mono({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={robotoMono.className}>
-      <ThemeProvider>
-        <body>
-          <ThemeChanger />
-          {children}
-        </body>
-      </ThemeProvider>
+      <Layout>
+        {children}
+      </Layout>
     </html>
   )
 }

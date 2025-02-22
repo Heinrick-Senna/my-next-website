@@ -1,6 +1,6 @@
 "use client"
 
-import { ThemeContext, ThemeState } from "@/contexts/ThemeContext";
+import { ThemeContext, ThemeProvider, ThemeState } from "@/contexts/ThemeContext";
 import { useContext, useState } from "react";
 import { CiDark } from "react-icons/ci";
 import { TfiShine } from "react-icons/tfi";
@@ -8,7 +8,7 @@ import './ThemeChanger.css';
 import { IoClose } from "react-icons/io5";
 
 export default function ThemeChanger() {
-    const { themeState, setThemeState } = useContext(ThemeContext);
+    const { theme, themeState, setThemeState } = useContext(ThemeContext);
     const [hover, setHover] = useState<ThemeState | null>(null);
     const gap = '.75rem';
 
