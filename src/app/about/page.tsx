@@ -20,7 +20,7 @@ export default function About() {
                 </span>
                 <span className="flex flex-col">
                     <span>
-                        Sobre as minhas habilidades técnicas, posso dizer que são bem versáteis e abraagem muitas frentes quando se trata de desenvolvimento.
+                        Sobre as minhas habilidades técnicas, posso dizer que são bem versáteis e abrangem muitas frentes quando se trata de desenvolvimento.
                     </span>
                     <span>
                         Experiência na criação e manutenção de API's.
