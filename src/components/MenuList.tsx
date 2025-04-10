@@ -6,10 +6,10 @@ const menuItem = `radius-2 px-4 py-2 font-semibold rounded-md border-2 border-cu
 export default function MenuList() {
     return (
         <ul className="w-full flex justify-evenly menu-list select-none min-w-[15vw]">
-            <Link href={'/about'} className={menuItem}>
+            <Link href={'/about'} className={menuItem} prefetch={true}>
                 <span>Sobre</span>
             </Link>
-            <Link href={'portfolio'} className={menuItem}>
+            <Link href={'portfolio'} className={menuItem} prefetch={true}>
                 <span>Portfolio</span>
             </Link>
         </ul>

@@ -95,22 +95,29 @@ body {
   transform-style: preserve-3d;
 }
 
+.carousel__cell::before {
+  position: absolute;
+  background-image: url('./favicon.ico');
+  background-position: center;
+  background-size: 15% auto;
+  background-repeat: no-repeat;
+  background-color: rgba(var(--background), 1);
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  content: "";
+  left: 1px;
+  top: 1px;
+  z-index: -1;
+  box-shadow: 0 0 1vw inset rgba(var(--foreground), .45);
+}
+
 .carousel__cell {
   position: absolute;
   width: calc(100vw - 6rem);
   max-width: calc(100vw - 6rem);
   height: 100%;
   transform-style: preserve-3d;
-  background-blend-mode: luminosity;
-  transition: background-blend-mode 200ms ease-in-out 0s, all ease 500ms;
-}
-
-.carousel__cell.active {
-  top: 0;
-  /* box-shadow: 0 0 20px rgba(var(--foreground), .45); */
-  /* filter: drop-shadow(0 10rem 200px white); */
-  background-blend-mode: difference;
-  transition: background-blend-mode 200ms ease-in-out 1s, all ease 500ms;  
+  transition: all ease 500ms;
 }
 
 .carousel__cell::after {
