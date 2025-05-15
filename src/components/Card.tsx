@@ -22,7 +22,7 @@ export default function Card({ data }: { data: IProjectCard }) {
 
 
             <div className="flex flex-wrap justify-between items-center">
-                <span className="p-2 rounded-md font-extrabold text-xl bg-backgroundOpacity/25 h-fit">{data.name}</span>
+                <span className="p-2 rounded-md font-extrabold text-xl bg-backgroundOpacity/65 text-center h-fit">{data.name}</span>
                 <span className="p-2 rounded-md font-bold bg-backgroundOpacity/65 border-2 border-current">{data.projectType}</span>
             </div>
 

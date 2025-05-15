@@ -78,7 +78,8 @@ body {
   width: calc(100vw - 6rem);
   position: relative;
   perspective: 1000px;
-  height: 10rem;
+  height: auto;
+  min-height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +89,7 @@ body {
 .scene .carousel.keen-slider {
   overflow: visible;
   width: calc(100vw - 6rem);
-  height: 10rem;
+  height: fit-content;
   max-width: calc(100vw - 6rem);
   top: 0;
   position: absolute;
@@ -115,7 +116,7 @@ body {
   position: absolute;
   width: calc(100vw - 6rem);
   max-width: calc(100vw - 6rem);
-  height: 100%;
+  height: fit-content;
   transform-style: preserve-3d;
   transition: all ease 500ms;
 }
@@ -147,16 +148,20 @@ body {
 @media (min-width: 768px) {
   .scene {
     width: 75vw;
+    height: 10rem;
+    min-height: none;
   }
 
   .scene .carousel.keen-slider {
     width: 75vw;
     max-width: 75vw;
+    height: 10rem;
   }
 
   .carousel__cell {
     width: 75vw;
     max-width: 75vw;
+    height: 100%;
   }
 }
 
@@ -164,16 +169,20 @@ body {
 @media (min-width: 1024px) {
   .scene {
     width: 45vw;
+    height: 10rem;
+    min-height: none;
   }
 
   .scene .carousel.keen-slider {
     width: 45vw;
     max-width: 45vw;
+    height: 10rem;
   }
 
   .carousel__cell {
     width: 45vw;
     max-width: 45vw;
+    height: 100%;
   }
 }
 
@@ -181,16 +190,20 @@ body {
 @media (min-width: 1280px) {
   .scene {
     width: 25vw;
+    height: 10rem;
+    min-height: none;
   }
 
   .scene .carousel.keen-slider {
     width: 35vw;
     max-width: 35vw;
+    height: 10rem;
   }
 
   .carousel__cell {
     width: 35vw;
     max-width: 35vw;
+    height: 100%;
   }
 }
 
