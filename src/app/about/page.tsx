@@ -13,7 +13,7 @@ export default function About() {
             </h2>
             <div className="flex flex-col gap-5 about-in">
                 <span>
-                    Tenho 21 anos e estou envolvido na área da tecnologia desde os 15, 7 como entusiasta, e 4 anos como profissional na área.
+                    Tenho 22 anos e estou envolvido na área da tecnologia desde os 15, 7 como entusiasta, e 4 anos como profissional na área.
                 </span>
                 <span>
                     Meu objetivo é ampliar meu conhecimento e alcançar um cargo de plena liderança, eu gostaria muito de ser reconhecido na comunidade de programação.
