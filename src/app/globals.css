@@ -12,10 +12,19 @@ body.light {
   --foreground: 23, 23, 23;
 }
 
+body.light .thumb-black,
+body .thumb-black {
+  opacity: 1;
+}
+
 @media (prefers-color-scheme: dark) {
   body:not(.dark, .light) {
     --background: 10, 10, 10;
     --foreground: 237, 237, 237;
+  }
+
+  body .thumb-black {
+    opacity: 0;
   }
 }
 
@@ -93,6 +102,7 @@ body {
   max-width: calc(100vw - 6rem);
   top: 0;
   position: absolute;
+  transform-origin: center;
   transform-style: preserve-3d;
 }
 
@@ -113,6 +123,7 @@ body {
 }
 
 .carousel__cell {
+  transform-origin: center;
   position: absolute;
   width: calc(100vw - 6rem);
   max-width: calc(100vw - 6rem);
@@ -135,9 +146,23 @@ body {
   transition: opacity 200ms ease-in-out 0s;
 }
 
+.carousel__cell .title-span {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out 1s;
+}
+
 .carousel__cell.active::after {
   transition: opacity 200ms ease-in-out 1s;
   opacity: 1;
+}
+
+.carousel__cell.active .title-span {
+  opacity: 1;
+}
+
+.carousel__cell:hover, 
+.carousel__cell:focus  {
+  scale: 1.1;
 }
 
 .carousel__cell * {
@@ -232,4 +257,21 @@ body {
   to {
     opacity: 1;
   }
+}
+
+@keyframes dialogShow {
+  0% {
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(1) translateX(-50%) translateY(-60%);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: center;
+    transform: scale(1) translateX(-50%) translateY(-50%);
+  }
+}
+
+.dialog-content-animated {
+  animation: dialogShow 350ms ease-out forwards;
 }
