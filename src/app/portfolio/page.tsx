@@ -13,8 +13,8 @@ const projects: IProjectCard[] = [
     {
         name: 'Integração de ERP para BPO',
         projectType: 'Backend',
-        thumbnail_white: '../PLLWhite.jpg',
-        thumbnail_black: '../PLLBlack.png',
+        thumbnail_white: '../PLLBlack.png',
+        thumbnail_black: '../PLLWhite.jpg',
         description: <>
             <div>
                 Desenvolvedor principal de uma integração de sistemas entre a maior BPO da América Latina <a className="text-blue-600" target="_blank" href="https://grupopll.com.br">Grupo PLL</a> e o seu,
@@ -56,8 +56,8 @@ const projects: IProjectCard[] = [
     {
         name: 'Micro-Frontend Theme',
         projectType: 'Frontend',
-        thumbnail_black: '../Microfrontend.png',
-        thumbnail_white: '../Microfrontend.png',
+        thumbnail_white: '../WebstoreBlack.jpg',
+        thumbnail_black: '../WebstoreWhite.jpg',
         description: <>
             <div>teste</div>
         </>,
