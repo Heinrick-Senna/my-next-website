@@ -6,6 +6,7 @@ import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { use, useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import CardDialog from "@/components/CardDialog";
 
 type TSlider = SliderInstance<KeenSliderOptions<{}, {}, KeenSliderHooks>, KeenSliderInstance<{}, {}, KeenSliderHooks>, KeenSliderHooks>
 
@@ -16,43 +17,62 @@ const projects: IProjectCard[] = [
         thumbnail_white: '../PLLBlack.png',
         thumbnail_black: '../PLLWhite.jpg',
         description: <>
-            <div>
+            <p>
                 Desenvolvedor principal de uma integração de sistemas entre a maior BPO da América Latina <a className="text-blue-600" target="_blank" href="https://grupopll.com.br">Grupo PLL</a> e o seu,
-                <span className="italic">agora atual,</span> sistema de ERP.
-            </div>
-            <div>
-                Projeto foi desenvolvido em Nest.js e MySQL.
-            </div>
-            <div>
-                A principal funcionalidade da API é o cadastro e atualização de entidades dentro do sistema do ERP em formato de filas, criada e geridas diratemente pelo DB (MySQL), uma das suas funções também
+                <span className="italic"> agora atual,</span> sistema de ERP.
+            </p>
+            <p>
+                Projeto foi desenvolvido <span className="italic text-muted-foreground"> principalmente mas não somente,</span> em Nest.js e MySQL.
+            </p>
+            <p>
+                Uma das principais funcionalidade da API é o cadastro e atualização de entidades dentro do sistema do ERP em formato de filas, criada e geridas diratemente pelo DB (MySQL), uma das suas funções também
                 é a consulta e reserva de peças que envolve: pedidos de peças, reserva do pedido, criação de uma fração de um tipo de peça, devolução de fração de peça, dentre outras.
-            </div>
-            <div>
+            </p>
+            <p>
                 O objetivo do projeto é facilitar a usabilidade do sistema da BPO para funcionários internos tanto nas operações em laborátorio quanto em operações envolvendo processos fiscais que agora, são feitas com mais facilidade e controle dentro do sistema de ERP.
-            </div>
+            </p>
         </>,
-        projectTags: ['Nodejs', 'Nestjs', 'mySQL', 'Jenkins'],
+        projectTags: ['Nodejs', 'Nestjs', 'MySQL', 'Jenkins'],
     },
     {
-        name: 'My Personal Website',
-        projectType: 'Frontend',
-        thumbnail_black: '../NextWebsite.webp',
-        thumbnail_white: '../NextWebsite.webp',
+        name: 'Meta Cloud API (Whatasapp Oficial API)',
+        projectType: 'Backend',
+        thumbnail_black: '../PLLMetaWhite.webp',
+        thumbnail_white: '../PLLMetaBlack.webp',
         description: <>
-            <div>teste</div>
+            <p>Esta é uma aplicação desenvolvida em NestJS que faz uso do Meta Cloud API</p>
+            <p>
+                A aplicação tem como principal foco o envio de notificações para clientes externos, internos e colaboradores da empresa.
+            </p>
+            <p>
+                Essa integração usa de uma arquitetura de filas em MySQL, garantindo gestão e métrica mediante todas as mensagens enviadas, está API criada em NestJS é usada para gerir tanto o envio de mensagens quanto as normativas relativas às mesmas.
+            </p>
+            <p>
+                Um diferencial da aplicação é a capacidade de adaptação quanto ao envio de templates e preenchimento de variáveis, contando com validação de bad list de palavras e preenchimento dinâmico de váriaveis de maneira configurável.
+            </p>
+        </>,
+        projectTags: ['Nodejs', 'Nestjs', 'MySQL'],
+    },
+    {
+        name: 'Meu Website Pessoal',
+        projectType: 'Frontend',
+        thumbnail_black: '../NextWhite.webp',
+        thumbnail_white: '../NextBlack.webp',
+        description: <>
+            <p>
+                Este é um Website construído em NextJs, que usa de um sistema de páginas estáticas geradas do lado do servidor para garantir mais eficiencia na renderização.
+            </p>
+            <p>
+                Além disso o site conta com um Frontend interativo inteiramente feito por mim, incluindo os textos, imagens, composições e animações como o background e mudança de temas. 
+                Vale mencionar o uso da biblioteca Keen-Slide para o carrossel de portfólio.
+            </p>
+            <p>
+                O uso de Inteligência Artificial se deu apenas na etapa de construção dos componentes das imagens, ainda sim, as editei no Adobe PhotoshopCS6 para seguirem o mesmo padrão de visual.
+            </p>
         </>,
         projectTags: ['Nodejs', 'NextJs', 'S3', 'Vercel', 'CloudFlare'],
     },
-    {
-        name: 'Webscrapping App',
-        projectType: 'Fullstack',
-        thumbnail_black: '../Crawler.webp',
-        thumbnail_white: '../Crawler.webp',
-        description: <>
-            <div>teste</div>
-        </>,
-        projectTags: ['NodeJS', 'ElectronJS', 'PuppeteerJS'],
-    },
+
     {
         name: 'Micro-Frontend Theme',
         projectType: 'Frontend',
@@ -64,14 +84,14 @@ const projects: IProjectCard[] = [
         projectTags: ['Nodejs', 'Nestjs', 'mySQL'],
     },
     {
-        name: 'Whastapp API',
-        projectType: 'Backend',
-        thumbnail_black: '../Meta.webp',
-        thumbnail_white: '../Meta.webp',
+        name: 'Webscrapping App',
+        projectType: 'Fullstack',
+        thumbnail_black: '../PuppeteerWhite.webp',
+        thumbnail_white: '../PuppeteerBlack.webp',
         description: <>
             <div>teste</div>
         </>,
-        projectTags: ['Nodejs', 'Nestjs', 'mySQL'],
+        projectTags: ['NodeJS', 'ElectronJS', 'PuppeteerJS'],
     }
 ]
 
@@ -172,6 +192,8 @@ export default function Portfolio() {
         return () => clearInterval(timeout)
     }, [size]);
 
+    
+
     useEffect(() => {
         internalSlider.current?.update({ ...sliderOptions });
     }, [internalSlider, sliderOptions]);
@@ -184,46 +206,23 @@ export default function Portfolio() {
                         <div
                             onClick={() => internalSlider.current?.track.details.rel == i ? setSelectedProject(project) : null}
                             onKeyUp={(e) => {
-                                if (e.key != 'Enter') return;
-
-                                if (i == internalSlider.current?.track.details.rel) return setSelectedProject(project);
-
-                                return internalSlider.current?.moveToIdx(i);
+                                if (e.key == 'Enter' && i == internalSlider.current?.track.details.rel) {
+                                    setSelectedProject(project);
+                                }
                             }}
-                            tabIndex={
-                                i == internalSlider.current?.track.details.rel
-                                    || i == internalSlider.current?.track.absToRel(internalSlider.current?.track.details.rel - 1)
-                                    || i == internalSlider.current?.track.absToRel(internalSlider.current?.track.details.rel + 1)
-                                    ? 0 : undefined
-                            }
-                            className="relative rounded-md bg-black flex flex-col border-current border-2 justify-start cursor-pointer carousel__cell">
+                            tabIndex={i == internalSlider.current?.track.details.rel ? 0 : undefined}
+                            className={`group relative rounded-md bg-black flex flex-col justify-start cursor-pointer carousel__cell `}
+                        >
                             <Card key={i} data={project} />
                         </div>
                     ))}
                 </div>
             </div>
 
-            <Dialog
-                modal={true}
-                open={!!selectedProject}
-                onOpenChange={(open) => !open && setSelectedProject(null)}
-            >
-                <DialogContent className="max-w-xs sm:max-w-screen-xl max-h-[80vh] overflow-auto dialog-content-animated">
-                    <DialogHeader className="flex flex-col gap-2">
-                        <DialogTitle>{selectedProject?.name} - {selectedProject?.projectType}</DialogTitle>
-                        <div className="flex flex-wrap gap-2">
-                            {selectedProject?.projectTags.map((tag, i) => (
-                                <span key={i} className="bg-muted px-2 py-1 rounded text-xs border-current border-2">{tag}</span>
-                            ))}
-                        </div>
-                    </DialogHeader>
-                    <div className="space-y-2">
-                        <div className="px-2 flex flex-col gap-6">
-                            {selectedProject?.description}
-                        </div>
-                    </div>
-                </DialogContent>
-            </Dialog>
+            <CardDialog
+                selectedProject={selectedProject}
+                setSelectedProject={setSelectedProject}
+            />
         </>
 
     )

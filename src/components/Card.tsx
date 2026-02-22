@@ -19,7 +19,7 @@ export default function Card({ data }: { data: IProjectCard }) {
             </div>
 
             <div
-                className="thumb-white absolute w-full h-full left-0 top-0 z-[-1] transition-opacity duration-[400ms]"
+                className="thumb-white border-current border-2 absolute w-full h-full left-0 top-0 z-[-1] transition-all duration-[400ms] rounded-md"
                 aria-label={`Project thumbnail for ${data.name}`}
                 style={{
                     backgroundImage: `url(${data.thumbnail_white})`,
@@ -29,7 +29,7 @@ export default function Card({ data }: { data: IProjectCard }) {
                 }}
             />
             <div
-                className="thumb-black absolute w-full h-full left-0 top-0 z-[-1] transition-opacity duration-[400ms]"
+                className="thumb-black border-current border-2 absolute w-full h-full left-0 top-0 z-[-1] transition-all duration-[400ms] rounded-md"
                 aria-label={`Project thumbnail for ${data.name}`}
                 style={{
                     backgroundImage: `url(${data.thumbnail_black})`,

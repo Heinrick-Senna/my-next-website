@@ -15,7 +15,7 @@ const robotoMono = Roboto_Mono({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={robotoMono.className}>
+    <html lang="pt-br" className={robotoMono.className}>
       <Layout>
         {children}
       </Layout>

@@ -106,7 +106,7 @@ body {
   transform-style: preserve-3d;
 }
 
-.carousel__cell::before {
+.carousel__cell:not(.active):before {
   position: absolute;
   background-image: url('./favicon.ico');
   background-position: center;
@@ -162,7 +162,7 @@ body {
 
 .carousel__cell:hover, 
 .carousel__cell:focus  {
-  scale: 1.1;
+  
 }
 
 .carousel__cell * {

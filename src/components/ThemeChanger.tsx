@@ -1,14 +1,15 @@
 "use client"
 
-import { ThemeContext, ThemeProvider, ThemeState } from "@/contexts/ThemeContext";
+import { ThemeContext, ThemeState } from "@/contexts/ThemeContext";
 import { useContext, useState } from "react";
 import { CiDark } from "react-icons/ci";
 import { TfiShine } from "react-icons/tfi";
 import './ThemeChanger.css';
 import { IoClose } from "react-icons/io5";
+import { MonitorCheck, MonitorIcon, MonitorOffIcon } from "lucide-react";
 
 export default function ThemeChanger() {
-    const { theme, themeState, setThemeState } = useContext(ThemeContext);
+    const { themeState, setThemeState } = useContext(ThemeContext);
     const [hover, setHover] = useState<ThemeState | null>(null);
     const gap = '.75rem';
 
@@ -23,6 +24,8 @@ export default function ThemeChanger() {
                 style={{ paddingRight: gap }}
                 onMouseEnter={mouseEnterHandler}
                 onClick={mouseClickHandler}
+                onFocus={mouseEnterHandler}
+                onBlur={mouseLeaveHandler}
             >
                 <TfiShine size={26} />
             </button>
@@ -32,6 +35,8 @@ export default function ThemeChanger() {
                 onMouseLeave={mouseLeaveHandler}
                 onMouseEnter={mouseEnterHandler}
                 onClick={mouseClickHandler}
+                onFocus={mouseEnterHandler}
+                onBlur={mouseLeaveHandler}
             >
                 <CiDark size={26} />
             </button>
@@ -41,8 +46,10 @@ export default function ThemeChanger() {
                 onMouseLeave={mouseLeaveHandler}
                 onMouseEnter={mouseEnterHandler}
                 onClick={mouseClickHandler}
+                onFocus={mouseEnterHandler}
+                onBlur={mouseLeaveHandler}
             >
-                <IoClose size={26} />
+                <MonitorIcon size={26} />
             </button>
         </div>
     );
