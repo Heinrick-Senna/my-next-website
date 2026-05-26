@@ -13,7 +13,7 @@
         height: 2px;
         display: flex;
         background-color: currentColor;
-        transform-origin: center;
+        transform-origin: left;
         transition: transform 250ms;
         transform: translateY(-.2em) scaleX(0);
     }
