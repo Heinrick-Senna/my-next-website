@@ -35,6 +35,32 @@ const projects: IProjectCard[] = [
         projectTags: ['Nodejs', 'Nestjs', 'MySQL', 'Jenkins'],
     },
     {
+        name: 'Integração TikTok Seller API',
+        projectType: 'Backend',
+        thumbnail_white: '../PLLBlack.png',
+        thumbnail_black: '../PLLWhite.jpg',
+        description: <>
+            <p>
+                Desenvolvi uma API de integração entre a plataforma Webstore e o TikTok Shop, permitindo que os lojistas da Webstore gerenciem seus pedidos do TikTok diretamente pelo
+                ecossistema ao qual já estão habituados. O projeto foi construído com NestJS e TypeScript, seguindo arquitetura modular com separação clara de responsabilidades entre
+                autorização, produtos e pedidos.
+            </p>
+
+            <p>
+                O núcleo da integração cobre o ciclo de vida completo de um pedido: listagem com mapeamento de status (confirmado, aguardando envio, em trânsito, entregue), upload de Nota
+                Fiscal eletrônica (NF-e) em XML para conformidade fiscal brasileira, atualização de rastreamento junto às transportadoras e confirmação de entrega via API do TikTok. Um
+                desafio técnico relevante foi o tratamento das diferenças de modelo entre as plataformas — como a ausência do status "processing" no TikTok, resolvida com uma camada de
+                compatibilidade que garante a rastreabilidade interna sem violar o contrato da API externa.
+            </p>
+            <p>
+                A solução também implementa o fluxo OAuth 2.0 para autorização da loja pelo vendedor, sincronização de catálogo de produtos com upload automático de imagens, e um mecanismo de
+                assinatura de requisições exigido pela API do TikTok. O projeto foi entregue com logs estruturados em todos os endpoints críticos, facilitando o monitoramento e o diagnóstico
+                de falhas em produção.
+            </p>
+        </>,
+        projectTags: ['Nodejs', 'Nestjs', 'MySQL', 'Jenkins'],
+    },
+    {
         name: 'Meta Cloud API (Whatasapp Oficial API)',
         projectType: 'Backend',
         thumbnail_black: '../PLLMetaWhite.webp',
@@ -63,7 +89,7 @@ const projects: IProjectCard[] = [
                 Este é um Website construído em NextJs, que usa de um sistema de páginas estáticas geradas do lado do servidor para garantir mais eficiencia na renderização.
             </p>
             <p>
-                Além disso o site conta com um Frontend interativo inteiramente feito por mim, incluindo os textos, imagens, composições e animações como o background e mudança de temas. 
+                Além disso o site conta com um Frontend interativo inteiramente feito por mim, incluindo os textos, imagens, composições e animações como o background e mudança de temas.
                 Vale mencionar o uso da biblioteca Keen-Slide para o carrossel de portfólio.
             </p>
             <p>
@@ -192,7 +218,7 @@ export default function Portfolio() {
         return () => clearInterval(timeout)
     }, [size]);
 
-    
+
 
     useEffect(() => {
         internalSlider.current?.update({ ...sliderOptions });
