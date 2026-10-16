@@ -12,9 +12,6 @@ export default function MenuList() {
             <Link href={'portfolio'} className={menuItem} prefetch={true}>
                 <span>Portfolio</span>
             </Link>
-            <Link href={'/blog'} className={menuItem} prefetch={true}>
-                <span>Blog</span>
-            </Link>
         </ul>
     );
 }
